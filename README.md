@@ -19,6 +19,8 @@ This repository will be used for teaching CI/CD via GitHub Actions deploying to 
 
 Before you begin, make sure you have the following in place:
 
+//TODO - add common errors and typical scenarios to be encountered
+
 ### 1. **GitHub Account**
 
    - If you don't have one, [sign up for a GitHub account here](https://github.com/join).
