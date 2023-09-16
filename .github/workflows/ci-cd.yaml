@@ -30,7 +30,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Try the cluster !
+        run: kubectl get pods -A
+
       - name: Deploy to Minikube
         run: |
           kubectl apply -f deployment.yaml
-          kubectl expose deployment your-deployment --type=NodePort --port=3000
