@@ -80,22 +80,23 @@ Create a `deployment.yaml` file to describe your application's configuration. He
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: my-nodejs-app   # The name of your deployment, can be customized.
 spec:
-  replicas: 3
+  replicas: 3   # Number of replica pods to maintain. Adjust as needed.
   selector:
     matchLabels:
-      app: my-app
+      app: my-nodejs-app   # Label to select pods for this deployment.
   template:
     metadata:
       labels:
-        app: my-app
+        app: my-nodejs-app   # Label to identify pods created by this template.
     spec:
       containers:
-      - name: my-app
-        image: your-docker-username/your-app-name:your-app-tag
+      - name: my-nodejs-app
+        image: your-docker-username/my-nodejs-app:v1.0.0   # Docker image to use for the container.
         ports:
-        - containerPort: 80
+        - containerPort: 80   # Port exposed by the container (your app should listen on this port).
+        # Add more configuration options here if needed.
 ```
 
 This YAML file defines how Kubernetes should run your app.
