@@ -33,4 +33,4 @@ jobs:
       - name: Deploy to Minikube
         run: |
           kubectl apply -f deployment.yaml
-          kubectl expose deployment your-deployment --type=NodePort --port=3000
+          kubectl expose deployment your-deployment --type=NodePort --port=80
