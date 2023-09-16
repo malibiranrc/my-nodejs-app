@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: my-nodejs-app
-        image: rielam/my-nodejs-app:v1.0.0   # Docker image to use for the container.
+        image: rielam/mynodejsapp:v1.0.0   # Docker image to use for the container.
         ports:
-        - containerPort: 80   # Port exposed by the container (your app should listen on this port).
+        - containerPort: 3000   # Port exposed by the container (your app should listen on this port).
         resources:
           limits:
             memory: 1024Mi
