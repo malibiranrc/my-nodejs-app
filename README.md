@@ -3,6 +3,7 @@ This repository will be used for teaching CI/CD via GitHub Actions deploying to 
 
 ## Table of Contents
 
+- [Key Terms](#key-terms)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
   - [Running Locally](#running-locally)
@@ -14,6 +15,44 @@ This repository will be used for teaching CI/CD via GitHub Actions deploying to 
 - [License](#license)
 
 # Setting Up CI/CD with GitHub Actions and Kubernetes
+
+## Key Terms
+
+## Continuous Integration (CI)
+
+- **Continuous Integration (CI)**: A development practice where code changes are frequently and automatically integrated into a shared repository. This practice helps identify issues early by running automated tests.
+
+- **Repository**: A location where all your project files, including code, are stored. In the context of Git and GitHub, this is where your version-controlled codebase resides.
+
+- **Commit**: A snapshot of your code changes. You create commits to save your work and make it trackable.
+
+- **Push**: The act of uploading your local code changes to a remote repository, making them accessible to others.
+
+## Continuous Deployment/Delivery (CD)
+
+- **Continuous Deployment (CD)**: A practice where code changes that pass automated tests are automatically deployed to production or a staging environment without manual intervention.
+
+- **Continuous Delivery (CD)**: Similar to continuous deployment, but the final deployment to production is triggered manually.
+
+- **Docker**: A platform for developing, shipping, and running applications inside containers. Containers are lightweight, portable, and isolated environments for applications and their dependencies.
+
+## Kubernetes
+
+- **Kubernetes**: An open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.
+
+- **Pod**: The smallest deployable unit in Kubernetes. A pod can contain one or more containers that share network and storage resources.
+
+- **Deployment**: A Kubernetes resource that manages the deployment and scaling of your application's pods. It ensures a specified number of replicas (copies) of your application are running.
+
+- **Service**: A Kubernetes resource that provides a consistent way to access pods. Services load-balance traffic across pod replicas.
+
+- **Ingress**: A Kubernetes resource for managing external access to services, typically HTTP/HTTPS traffic. It enables features like routing and SSL termination.
+
+- **Config Maps and Secrets**: Kubernetes resources for managing configuration data and sensitive information like passwords or API keys.
+
+- **Namespace**: A way to partition a Kubernetes cluster into multiple virtual clusters. It's used for organizational or isolation purposes.
+
+- **Persistent Volumes and Persistent Volume Claims**: Kubernetes resources used for managing storage for your applications.
 
 ## Prerequisites
 
