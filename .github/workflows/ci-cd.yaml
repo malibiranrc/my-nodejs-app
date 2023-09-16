@@ -22,6 +22,7 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker push rielam/mynodejsapp:latest
 
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -30,9 +31,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@latest
+
       - name: Try the cluster !
         run: kubectl get pods -A
 
       - name: Deploy to Minikube
         run: |
-          kubectl apply -f deployment.yaml
+          kubectl apply -f deployment.yaml  
