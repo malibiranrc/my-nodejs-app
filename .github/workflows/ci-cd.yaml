@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  push:
+    branches:
+      - main   # Trigger the workflow when code is pushed to the 'main' branch.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Use the latest version of Ubuntu as the runner.
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2   # Use the 'actions/checkout' action to fetch your code.
+
+    - name: Set up Docker
+      uses: docker/setup-docker@v2   # Use the 'docker/setup-docker' action to set up Docker.
+
+    - name: Build Docker image
+      run: |
+        docker build -t your-docker-username/my-nodejs-app:v1.0.0 .   # Build a Docker image.
+        docker push your-docker-username/my-nodejs-app:v1.0.0   # Push the image to a container registry.
+
+    - name: Set up kubectl
+      uses: azure/k8s-set-context@v1   # Use the 'azure/k8s-set-context' action to set up kubectl.
+      with:
+        kubeconfig: ${{ secrets.KUBE_CONFIG }}   # Use the Kubernetes configuration stored in GitHub Secrets.
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f deployment.yaml   # Deploy your application using the 'deployment.yaml' file.
