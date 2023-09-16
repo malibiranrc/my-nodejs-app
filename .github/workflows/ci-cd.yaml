@@ -6,30 +6,31 @@ name: CI
 on:
   push:
     branches:
-      - main   # Trigger the workflow when code is pushed to the 'main' branch.
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest   # Use the latest version of Ubuntu as the runner.
-    
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v2   # Use the 'actions/checkout' action to fetch your code.
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t rielam/mynodejsapp:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push rielam/mynodejsapp:latest
 
-    - name: Login to Docker Hub
-      run: |
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
 
-    - name: Build Docker Image
-      run: |
-        docker build -t minikube:latest -f Dockerfile .
-        eval $(minikube -p minikube docker-env)
-        docker tag minikube:latest rielam/minikube:latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Push Docker Image to Local Minikube
-      run: |
-        docker push rielam/minikube:latest
+      - name: Deploy to Minikube
+        run: |
+          kubectl apply -f deployment.yaml
+          kubectl expose deployment your-deployment --type=NodePort --port=3000
