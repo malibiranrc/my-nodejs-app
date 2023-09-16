@@ -104,7 +104,7 @@ This YAML file defines how Kubernetes should run your app.
 
 ## Step 4: Dockerize Your Application
 
-Create a `Dockerfile` in your project directory. Here's a simplified example for a Node.js app:
+Create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
 
 ```Dockerfile
 # Use an official Node.js runtime as a parent image
@@ -128,6 +128,20 @@ EXPOSE 80
 # Start the application
 CMD ["node", "app.js"]
 ```
+
+FROM node:14: Specifies the base image for your application, which is an official Node.js image.
+
+WORKDIR /app: Sets the working directory inside the container to /app.
+
+COPY package*.json ./: Copies package.json and package-lock.json to the working directory.
+
+RUN npm install: Installs your application's dependencies using npm.
+
+COPY . .: Copies your application's source code (all files and directories) into the container.
+
+EXPOSE 80: Exposes port 80, indicating that your application inside the container will listen on this port.
+
+CMD ["node", "app.js"]: Specifies the command to start your Node.js application when the container starts.
 
 This `Dockerfile` packages your app into a Docker container.
 
