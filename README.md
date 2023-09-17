@@ -111,6 +111,50 @@ Note that there are several ways to authenticate to GitHub, including using your
   Alternatively, you can view official documentation from VS Code here: 
   https://code.visualstudio.com/docs/sourcecontrol/github
 
+### Application Code
+
+For the purposes of this project, you will be using a simple node.js application. Make sure to include these files as part of your repository:
+
+'app.js'
+```
+'use strict';
+
+const express = require('express');
+
+// Constants
+const PORT = 3000;
+const HOST = '0.0.0.0';
+
+// App
+const app = express();
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
+
+```
+
+'server.js'
+```
+'use strict';
+
+const express = require('express');
+
+// Constants
+const PORT = 3000;
+const HOST = '0.0.0.0';
+
+// App
+const app = express();
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
+```
 
 
 ## IV. Setting Up Your Kubernetes Cluster
@@ -224,6 +268,28 @@ CMD ["node", "app.js"]: Specifies the command to start your Node.js application 
 
 This `Dockerfile` packages your app into a Docker container.
 
+### Creating a package.json file
+Create a package.json file: If you don't already have a package.json file for your Node.js application, you should create one. This file lists your project's dependencies and other important information.
+
+```json
+{
+  "name": "my-nodejs-app",
+  "version": "1.0.0",
+  "description": "My Node.js Application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "other-dependency": "^1.2.3"
+    // Add your dependencies here
+  }
+}
+```
+
+Creating a `package.json` file is essential for managing your Node.js application's dependencies and is typically used in the Docker image build process. Make sure to include all your project's dependencies in this file.
+
 ## VII. Pushing Code to GitHub
 
 Commit your code and push it to your GitHub repository using these commands:
@@ -237,6 +303,9 @@ git push origin main
 Or alternatively, you can use the Source Explorer from Visual Studio Code to commit your code:
 ![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/b989c3f7-465c-4573-b414-8f912a62d2f3)
 
+Your project should look something like this:
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/279e4dc1-a2a1-47d4-9bc9-845532d3f783)
 
 ## VIII. Setting Up GitHub Actions
 
