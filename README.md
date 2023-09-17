@@ -115,11 +115,13 @@ Note that there are several ways to authenticate to GitHub, including using your
 
    - If you're new to Kubernetes, consider using a managed service like [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) or [Amazon EKS](https://aws.amazon.com/eks/). These services simplify cluster management.
 
-   - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine.
+   - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine. We will discuss this later in the GitHub Actions step.
 
 ## V. Creating a Kubernetes Manifest
 
-Create a `deployment.yaml` file to describe your application's configuration. Here's a simplified example for a Node.js app:
+Creating a Kubernetes manifest is like giving instructions to Kubernetes on how to run your application. It ensures consistency, automates deployment, and makes it easy to manage and scale your app. Think of it as a recipe for your application in the Kubernetes environment.
+
+To create a manifest, create a `deployment.yaml` file to describe your application's configuration. You may refer to this repository to view where it's located. Here is the manifest used for this project:
 
 ```yaml
 apiVersion: apps/v1
@@ -170,11 +172,15 @@ spec:
     port: 80
 ```
 
-This YAML file defines how Kubernetes should run your app.
+This YAML file defines how Kubernetes should run your app. It should look something like this:
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/c85bc1a8-f6a3-470e-b298-11704a989529)
 
-## VI. Dockerizing Your Application
 
-Create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
+## VI. Dockerizing The Application
+
+Dockerizing your app ensures it runs consistently across different environments, simplifies deployment, and makes it easy to scale and manage dependencies. It's a best practice for modern software development and CI/CD pipelines.
+
+To Dockerize your application, create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
 
 ```Dockerfile
 # Use an official Node.js runtime as a parent image
@@ -232,7 +238,7 @@ Or alternatively, you can use the Source Explorer from Visual Studio Code to com
 
 ## VIII. Setting Up GitHub Actions
 
-Create a `.github/workflows` directory in your repository and add a `ci-cd.yaml` file to define your GitHub Actions workflow. Here's an example:
+Create a `.github/workflows` directory in your repository and add a `ci-cd.yaml` file to define your GitHub Actions workflow. You can refer to the code comments for explanations on what each step does. Here is an example:
 
 ```yaml
 # This is a basic workflow to help you get started with Actions
@@ -298,17 +304,24 @@ jobs:
           kubectl apply -f deployment.yaml
 ```
 
+Alternatively, you can go to the 'Actions' tab on your repository and create a simple workflow, and use that template.
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/0a9d656f-f47c-49e5-8840-8af0402ae518)
+
+
 ## IX. Configuring GitHub Secrets
 
 In your GitHub repository, navigate to **Settings** > **Secrets** and add the following secrets:
 
 - `DOCKER_USERNAME`: Your Docker Hub or container registry username.
 - `DOCKER_PASSWORD`: Your Docker Hub or container registry password/token.
-- `KUBE_CONFIG`: The contents of your Kubernetes config file (`~/.kube/config`).
 
 ## X. Running Your CI/CD Pipeline
 Now, whenever you push changes to your GitHub repository's `main` branch, the GitHub Actions workflow will trigger, building your Docker image and deploying it to your Kubernetes cluster.
 ![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/22681b06-0573-425e-bfdd-c526afafdf38)
+
+You can monitor your build (CI) and deployments (CD) in the 'Actions' tab of your repository at the top of the GitHub page
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/7a2df39a-95f2-47e9-87f3-599f6b801e47)
+
 
 
 ## Key Terms
