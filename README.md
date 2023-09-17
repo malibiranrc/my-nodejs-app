@@ -156,73 +156,7 @@ app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 ```
 
-
-## IV. Setting Up Your Kubernetes Cluster
-
-   - If you're new to Kubernetes, consider using a managed service like [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) or [Amazon EKS](https://aws.amazon.com/eks/). These services simplify cluster management.
-
-   - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine. We will discuss this later in the GitHub Actions step.
-
-## V. Creating a Kubernetes Manifest
-
-Creating a Kubernetes manifest is like giving instructions to Kubernetes on how to run your application. It ensures consistency, automates deployment, and makes it easy to manage and scale your app. Think of it as a recipe for your application in the Kubernetes environment.
-
-To create a manifest, create a `deployment.yaml` file to describe your application's configuration. You may refer to this repository to view where it's located. Here is the manifest used for this project:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: my-nodejs-app   # The name of your deployment, can be customized.
-spec:
-  replicas: 3   # Number of replica pods to maintain. Adjust as needed.
-  selector:
-    matchLabels:
-      app: my-nodejs-app   # Label to select pods for this deployment.
-  template:
-    metadata:
-      labels:
-        app: my-nodejs-app   # Label to identify pods created by this template.
-    spec:
-      containers:
-      - name: my-nodejs-app
-        image: rielam/mynodejsapp:latest   # Docker image to use for the container.
-        ports:
-        - containerPort: 3000   # Port exposed by the container (your app should listen on this port).
-        resources:
-          limits:
-            memory: 2048Mi
-            cpu: "2"
----
-apiVersion: v1
-kind: Service
-metadata:
-  # The name of the Service.
-  name: my-nodejs-app
-  # The namespace where the Service is created (default is often used).
-  namespace: default
-spec:
-  # Selects the Pods to expose with this Service.
-  selector:
-    app: my-nodejs-app
-
-  # Specifies the type of Service.
-  type: NodePort
-
-  # Specifies the ports to expose.
-  ports:
-  - name: http
-    # The target port on the Pods to forward traffic to.
-    targetPort: 3000
-    # The port on the Service itself that listens for incoming traffic.
-    port: 80
-```
-
-This YAML file defines how Kubernetes should run your app. It should look something like this:
-![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/c85bc1a8-f6a3-470e-b298-11704a989529)
-
-
-## VI. Dockerizing The Application
+## IV. Dockerizing The Application
 
 Dockerizing your app ensures it runs consistently across different environments, simplifies deployment, and makes it easy to scale and manage dependencies. It's a best practice for modern software development and CI/CD pipelines.
 
@@ -315,6 +249,72 @@ Create a package.json file: If you don't already have a package.json file for yo
 ```
 
 Creating a `package.json` file is essential for managing your Node.js application's dependencies and is typically used in the Docker image build process. Make sure to include all your project's dependencies in this file.
+
+## V. Setting Up Your Kubernetes Cluster
+
+   - If you're new to Kubernetes, consider using a managed service like [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) or [Amazon EKS](https://aws.amazon.com/eks/). These services simplify cluster management.
+
+   - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine. We will discuss this later in the GitHub Actions step.
+
+## VI. Creating a Kubernetes Manifest
+
+Creating a Kubernetes manifest is like giving instructions to Kubernetes on how to run your application. It ensures consistency, automates deployment, and makes it easy to manage and scale your app. Think of it as a recipe for your application in the Kubernetes environment.
+
+To create a manifest, create a `deployment.yaml` file to describe your application's configuration. You may refer to this repository to view where it's located. Here is the manifest used for this project:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodejs-app   # The name of your deployment, can be customized.
+spec:
+  replicas: 3   # Number of replica pods to maintain. Adjust as needed.
+  selector:
+    matchLabels:
+      app: my-nodejs-app   # Label to select pods for this deployment.
+  template:
+    metadata:
+      labels:
+        app: my-nodejs-app   # Label to identify pods created by this template.
+    spec:
+      containers:
+      - name: my-nodejs-app
+        image: rielam/mynodejsapp:latest   # Docker image to use for the container.
+        ports:
+        - containerPort: 3000   # Port exposed by the container (your app should listen on this port).
+        resources:
+          limits:
+            memory: 2048Mi
+            cpu: "2"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # The name of the Service.
+  name: my-nodejs-app
+  # The namespace where the Service is created (default is often used).
+  namespace: default
+spec:
+  # Selects the Pods to expose with this Service.
+  selector:
+    app: my-nodejs-app
+
+  # Specifies the type of Service.
+  type: NodePort
+
+  # Specifies the ports to expose.
+  ports:
+  - name: http
+    # The target port on the Pods to forward traffic to.
+    targetPort: 3000
+    # The port on the Service itself that listens for incoming traffic.
+    port: 80
+```
+
+This YAML file defines how Kubernetes should run your app. It should look something like this:
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/c85bc1a8-f6a3-470e-b298-11704a989529)
+
+
 
 ## VII. Pushing Code to GitHub
 
