@@ -15,7 +15,7 @@ Performing CI/CD with Kubernetes and GitHub Actions is a streamlined approach to
 - [Creating A Kubernetes Manifest](#vi-creating-a-kubernetes-manifest)
 - [Pushing Code to GitHub](#vii-pushing-code-to-github)
 - [Configuring GitHub Secrets](#viii-configuring-github-secrets)
-- [Setting Up GitHub Actions](#ix--setting-up-github-actions)
+- [Setting Up GitHub Actions](#ix-setting-up-github-actions)
 - [Running your CI/CD Pipeline](#x-running-your-cicd-pipeline)
 
 # Setting Up CI/CD with GitHub Actions and Kubernetes 🚀
