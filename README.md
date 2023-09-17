@@ -226,6 +226,33 @@ This YAML file defines how Kubernetes should run your app. It should look someth
 
 Dockerizing your app ensures it runs consistently across different environments, simplifies deployment, and makes it easy to scale and manage dependencies. It's a best practice for modern software development and CI/CD pipelines.
 
+Sure, here are the steps to create a DockerHub account and then create a repository on DockerHub, formatted in Markdown:
+
+
+### Creating a DockerHub Repository
+
+1. **Log In**: If you're not already logged in, go to the [DockerHub website](https://hub.docker.com/), and click the "Log In" button at the top right corner. Enter your DockerHub username and password to log in.
+
+2. **Access Repositories**: After logging in, click on your profile picture or username at the top right corner of the DockerHub homepage, and select "Your Repositories" from the dropdown menu.
+
+3. **Create Repository**: On the "Your Repositories" page, click the green "Create Repository" button.
+
+4. **Set Repository Details**:
+   - **Namespace**: Choose a namespace for your repository. If you're just getting started, you can leave it as your username or select an organization if you have one.
+   - **Repository Name**: Enter a name for your repository.
+   - **Description** (optional): Add a description to provide more information about your repository.
+   - **Visibility**: Choose between public or private visibility, depending on your needs and DockerHub plan.
+
+5. **Configure Automated Builds** (optional): If you want to link your repository to a source code repository (e.g., GitHub) for automated builds, you can configure this in the "Build Settings" section.
+
+6. **Create Repository**: Click the green "Create" button to create your DockerHub repository.
+
+7. **Repository Created**: Your repository is now created and ready to use. You'll be directed to the repository's page, where you can find instructions on pushing Docker images to it and other management options.
+
+It should look something like this:
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/efc49d9e-fcc0-4d08-b30b-c8df1c0cbb9e)
+
 To Dockerize your application, create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
 
 ```Dockerfile
@@ -273,19 +300,18 @@ Create a package.json file: If you don't already have a package.json file for yo
 
 ```json
 {
-  "name": "my-nodejs-app",
-  "version": "1.0.0",
-  "description": "My Node.js Application",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "other-dependency": "^1.2.3"
-    // Add your dependencies here
+    "name": "docker_web_app",
+    "version": "1.0.0",
+    "description": "Node.js on Docker",
+    "author": "Riel Malibiran <ra.malibiran@gmail.com>",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.16.1"
+    }
   }
-}
 ```
 
 Creating a `package.json` file is essential for managing your Node.js application's dependencies and is typically used in the Docker image build process. Make sure to include all your project's dependencies in this file.
@@ -339,13 +365,13 @@ jobs:
       # Step to build and push a Docker image.
       - name: Build and Push Docker Image
         run: |
-          # Build a Docker image with a specific tag.
+          # Build a Docker image with a specific tag. The format used is your dockerusername/imagename:tags
           docker build -t rielam/mynodejsapp:latest .
 
           # Log in to Docker Hub using secrets.
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-          # Push the Docker image to a Docker Hub repository.
+          # Push the Docker image to a Docker Hub repository. The format used is your dockerusername/imagename:tags
           docker push rielam/mynodejsapp:latest
 
   # A job named 'deploy' that runs after the 'build' job is completed.
