@@ -8,8 +8,15 @@ Performing CI/CD with Kubernetes and GitHub Actions is a streamlined approach to
 ## Table of Contents
 
 - [Prerequisites](#i-prerequisites)
-- [Creating a GitHub Respository](#ii-Creating-A-GitHub-Repository)
-- [Working with GitHub in VS Code](#iii-Working-with-GitHub-in-VS-Code)
+- [Creating a GitHub Respository](#ii-creating-a-github-repository)
+- [Working with GitHub in VS Code](#iii-working-with-github-in-vs-code)
+- [Dockerizing The Application](#iv-dockerizing-the-application)
+- [Setting Up Your Kubernetes Cluster](#v-setting-up-your-kubernetes-cluster)
+- [Creating A Kubernetes Manifest](#vi-creating-a-kubernetes-manifest)
+- [Pushing Code to GitHub](#vii-pushing-code-to-github)
+- [Configuring GitHub Secrets](#viii-configuring-github-secrets)
+- [Setting Up GitHub Actions](#ix--setting-up-github-actions)
+- [Running your CI/CD Pipeline](#x-running-your-cicd-pipeline)
 
 # Setting Up CI/CD with GitHub Actions and Kubernetes 🚀
 
