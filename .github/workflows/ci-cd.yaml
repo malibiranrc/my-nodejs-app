@@ -31,11 +31,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: start minikube
+      - name: Start minikube
         id: minikube
         uses: medyagh/setup-minikube@latest
 
-      - name: Try the cluster !
+      - name: Try out the cluster
         run: kubectl get pods -A
 
       - name: Deploy to Minikube
