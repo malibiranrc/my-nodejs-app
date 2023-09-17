@@ -1,6 +1,8 @@
 # my-nodejs-app
 This repository will be used for teaching CI/CD via GitHub Actions deploying to Kubernetes (minikube). This project is a simple example of how to set up a Node.js app, containerize it with Docker, and deploy it to Kubernetes using GitHub Actions for CI/CD.
 
+Performing CI/CD with Kubernetes and GitHub Actions is a streamlined approach to software development that combines version control, automated testing, containerization, and orchestration. It starts with developers pushing code changes to a GitHub repository, triggering automated workflows orchestrated by GitHub Actions. These workflows build and package the application into Docker containers and deploy them to a Kubernetes cluster using defined manifests. The benefits are substantial: it ensures rapid and reliable code delivery, scalability, portability, and consistent application behavior across various environments. GitHub Actions automates the entire pipeline, while Kubernetes provides a resilient and scalable runtime environment. Together, they empower teams to accelerate development, reduce errors, and deliver high-quality software with agility and efficiency.
+
 ## Table of Contents
 
 - [Prerequisites](#i-prerequisites)
