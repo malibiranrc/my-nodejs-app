@@ -333,7 +333,7 @@ Or alternatively, you can use the Source Explorer from Visual Studio Code to com
 
 Your project should look something like this:
 
-![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/279e4dc1-a2a1-47d4-9bc9-845532d3f783)
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/ec554ca1-9fe6-4862-b425-8f309a96bd37)
 
 ## VIII. Setting Up GitHub Actions
 
