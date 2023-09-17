@@ -343,6 +343,9 @@ In your GitHub repository, navigate to **Settings** > **Secrets** and add the fo
 - `DOCKER_USERNAME`: Your Docker Hub or container registry username.
 - `DOCKER_PASSWORD`: Your Docker Hub or container registry password/token.
 
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/47550d15-c581-44a3-b465-34d4e749e8d9)
+
+
 ## IX. Setting Up GitHub Actions
 
 Create a `.github/workflows` directory in your repository and add a `ci-cd.yaml` file to define your GitHub Actions workflow. You can refer to the code comments for explanations on what each step does. Here is an example:
