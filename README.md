@@ -57,7 +57,7 @@ All the links in one place:
 2. Log in to your GitHub account.
 
 3. Click the **"+"** icon in the top right corner and select **"New Repository"**.
-
+![NEW REPOSITORY](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/cd264f52-d645-488a-b049-9eb99e0dabb9)
 4. Fill out the repository details:
    - Repository name.
    - Description (optional).
