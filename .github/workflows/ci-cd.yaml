@@ -1,43 +1,61 @@
 # This is a basic workflow to help you get started with Actions
 
+# Name of the workflow, which will appear in the GitHub Actions UI.
 name: CI
 
-# Controls when the workflow will run
+# Controls when the workflow will run.
 on:
+  # Triggers the workflow on a push event to the 'main' branch.
   push:
     branches:
       - main
 
+# Jobs define the tasks to be executed in the workflow.
 jobs:
+  # A job named 'build' that will run on an 'ubuntu-latest' runner.
   build:
     runs-on: ubuntu-latest
 
+    # Steps define the individual tasks within the job.
     steps:
+      # Step to check out the source code from the repository.
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      # Step to build and push a Docker image.
       - name: Build and Push Docker Image
         run: |
+          # Build a Docker image with a specific tag.
           docker build -t rielam/mynodejsapp:latest .
+
+          # Log in to Docker Hub using secrets.
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+          # Push the Docker image to a Docker Hub repository.
           docker push rielam/mynodejsapp:latest
 
-
+  # A job named 'deploy' that runs after the 'build' job is completed.
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
+    # Steps define the tasks within the 'deploy' job.
     steps:
+      # Step to check out the source code from the repository.
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      # Step to start a Minikube cluster.
       - name: Start minikube
         id: minikube
         uses: medyagh/setup-minikube@latest
 
+      # Step to check the status of pods in the Kubernetes cluster.
       - name: Try out the cluster
         run: kubectl get pods -A
 
+      # Step to deploy the application to Minikube using a configuration file.
       - name: Deploy to Minikube
         run: |
-          kubectl apply -f deployment.yaml  
+          # Apply a Kubernetes configuration file (deployment.yaml) to deploy the application.
+          kubectl apply -f deployment.yaml

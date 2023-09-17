@@ -19,7 +19,7 @@ spec:
         - containerPort: 3000   # Port exposed by the container (your app should listen on this port).
         resources:
           limits:
-            memory: 1024Mi
+            memory: 2048Mi
             cpu: "2"
 ---
 apiVersion: v1
