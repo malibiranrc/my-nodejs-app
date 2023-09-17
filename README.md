@@ -3,13 +3,13 @@ This repository will be used for teaching CI/CD via GitHub Actions deploying to 
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Creating a GitHub Respository](creating-a-github-repository)
-- [Working with GitHub in VS Code](Working-with-GitHub-in-VS-Code)
+- [Prerequisites](#i-prerequisites)
+- [Creating a GitHub Respository](ii-creating-a-github-repository)
+- [Working with GitHub in VS Code](iii-Working-with-GitHub-in-VS-Code)
 
 # Setting Up CI/CD with GitHub Actions and Kubernetes 🚀
 
-## Prerequisites
+## I. Prerequisites
 
 Before you begin, make sure you have the following in place:
 
@@ -41,57 +41,8 @@ Before you begin, make sure you have the following in place:
    - Follow the installation instructions for your operating system to install Visual Studio Code.
 Follow these steps to log in to GitHub in Visual Studio Code:
 
-## Working with GitHub in VS Code 
 
-*Note: Documentation taken from: https://code.visualstudio.com/docs/sourcecontrol/github*
-
-[GitHub](https://github.com) is a cloud-based service for storing and sharing source code. Using GitHub with Visual Studio Code lets you share your source code and collaborate with others right within your editor. There are many ways to interact with GitHub, for example, via their website at [https://github.com](https://github.com) or the [Git](https://git-scm.com) command-line interface (CLI), but in VS Code, the rich GitHub integration is provided by the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension.
-
-<a class="install-extension-btn" href="vscode:extension/GitHub.vscode-pull-request-github">Install the GitHub Pull Requests and Issues extension</a>
-
-To get started with the GitHub in VS Code, you'll need to install [Git](https://git-scm.com/download), [create a GitHub account](https://docs.github.com/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and install the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension. In this topic, we'll demonstrate how you can use some of your favorite parts of GitHub without leaving VS Code.
-
-If you're new to source control or want to learn more about VS Code's basic Git support, you can start with the [Source Control](/docs/sourcecontrol/overview.md) topic.
-
-## Getting started with GitHub Pull Requests and Issues
-
-Once you've installed the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension, you'll need to sign in. Follow the prompts to authenticate with GitHub in the browser and return to VS Code.
-
-![Extension Sign In](images/github/extension-signin.png)
-
-If you are not redirected to VS Code, you can add your authorization token manually. In the browser window, you will receive your authorization token. Copy the token, and switch back to VS Code. Select **Signing in to github.com...** in the Status bar, paste the token, and hit `kbstyle(Enter)`.
-
-## Setting up a repository
-
-### Cloning a repository
-
-You can search for and clone a repository from GitHub using the **Git: Clone** command in the Command Palette (`kb(workbench.action.showCommands)`) or by using the **Clone Repository** button in the Source Control view (available when you have no folder open).
-
-![Clone Repository button in the Source Control view](images/github/git-clone-button.png)
-
-From the GitHub repository dropdown you can filter and pick the repository you want to clone locally.
-
-![GitHub repository dropdown filtered on microsoft/vscode](images/github/github-repo-dropdown.png)
-
-### Authenticating with an existing repository
-
-Enabling authentication through GitHub happens when you run any Git action in VS Code that requires GitHub authentication, such as pushing to a repository that you're a member of or cloning a private repository. You don't need to have any special extensions installed for authentication; it is built into VS Code so that you can efficiently manage your repository.
-
-When you do something that requires GitHub authentication, you'll see a prompt to sign in:
-
-![Authentication Prompt](images/github/auth-prompt.png)
-
-Follow the steps to sign into GitHub and return to VS Code. If authenticating with an existing repository doesn't work automatically, you may need to manually provide a personal access token. See [Personal Access Token authentication](https://github.com/microsoft/vscode-pull-request-github/wiki#personal-access-token-authentication) for more information.
-
-Note that there are several ways to authenticate to GitHub, including using your username and password with two-factor authentication (2FA), a personal access token, or an SSH key. See [About authentication to GitHub](https://docs.github.com/github/authenticating-to-github/about-authentication-to-github) for more information and details about each option.
-
->**Note**: If you'd like to work on a repository without cloning the contents to your local machine, you can install the [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=github.remotehub) extension to browse and edit directly on GitHub. You can learn more below in the [GitHub Repositories extension](/docs/sourcecontrol/github.md#github-repositories-extension) section.
-    
-  Alternatively, you can view official documentation from VS Code here: 
-  https://code.visualstudio.com/docs/sourcecontrol/github
-
-
-## Creating a GitHub Repository
+## II. Creating a GitHub Repository
 
 1. Go to [GitHub](https://github.com).
 
@@ -110,13 +61,63 @@ Note that there are several ways to authenticate to GitHub, including using your
 
 5. Click the **"Create repository"** button.
 
-## Setting Up Your Kubernetes Cluster
+## III. Working with GitHub in VS Code 
+
+*Note: Documentation taken from: https://code.visualstudio.com/docs/sourcecontrol/github*
+
+[GitHub](https://github.com) is a cloud-based service for storing and sharing source code. Using GitHub with Visual Studio Code lets you share your source code and collaborate with others right within your editor. There are many ways to interact with GitHub, for example, via their website at [https://github.com](https://github.com) or the [Git](https://git-scm.com) command-line interface (CLI), but in VS Code, the rich GitHub integration is provided by the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension.
+
+To get started with the GitHub in VS Code, you'll need to install [Git](https://git-scm.com/download), [create a GitHub account](https://docs.github.com/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and install the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension. In this topic, we'll demonstrate how you can use some of your favorite parts of GitHub without leaving VS Code.
+
+If you're new to source control or want to learn more about VS Code's basic Git support, you can start with the [Source Control](/docs/sourcecontrol/overview.md) topic.
+
+### Getting started with GitHub Pull Requests and Issues
+
+Once you've installed the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension, you'll need to sign in. Follow the prompts to authenticate with GitHub in the browser and return to VS Code.
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/238a0163-339a-41c2-a71b-9a5db3dbfdc6)
+
+If you are not redirected to VS Code, you can add your authorization token manually. In the browser window, you will receive your authorization token. Copy the token, and switch back to VS Code. Select **Signing in to github.com...** in the Status bar, paste the token, and hit `kbstyle(Enter)`.
+
+### Cloning a repository
+
+You can search for and clone a repository from GitHub using the **Git: Clone** command in the Command Palette (`kb(workbench.action.showCommands)`) or by using the **Clone Repository** button in the Source Control view (available when you have no folder open).
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/6daa37be-65a2-46bc-8ea7-8083d8624b90)
+
+
+From the GitHub repository dropdown you can filter and pick the repository you want to clone locally.
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/5a234537-c73c-4fe6-979a-59e7d52eae87)
+
+
+### Authenticating with an existing repository
+
+Enabling authentication through GitHub happens when you run any Git action in VS Code that requires GitHub authentication, such as pushing to a repository that you're a member of or cloning a private repository. You don't need to have any special extensions installed for authentication; it is built into VS Code so that you can efficiently manage your repository.
+
+When you do something that requires GitHub authentication, you'll see a prompt to sign in:
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/7ba6b7e6-4cf0-4e5e-890a-4c36687a5148)
+
+
+Follow the steps to sign into GitHub and return to VS Code. If authenticating with an existing repository doesn't work automatically, you may need to manually provide a personal access token. See [Personal Access Token authentication](https://github.com/microsoft/vscode-pull-request-github/wiki#personal-access-token-authentication) for more information.
+
+Note that there are several ways to authenticate to GitHub, including using your username and password with two-factor authentication (2FA), a personal access token, or an SSH key. See [About authentication to GitHub](https://docs.github.com/github/authenticating-to-github/about-authentication-to-github) for more information and details about each option.
+
+>**Note**: If you'd like to work on a repository without cloning the contents to your local machine, you can install the [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=github.remotehub) extension to browse and edit directly on GitHub. You can learn more below in the [GitHub Repositories extension](/docs/sourcecontrol/github.md#github-repositories-extension) section.
+    
+  Alternatively, you can view official documentation from VS Code here: 
+  https://code.visualstudio.com/docs/sourcecontrol/github
+
+
+
+## IV. Setting Up Your Kubernetes Cluster
 
    - If you're new to Kubernetes, consider using a managed service like [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) or [Amazon EKS](https://aws.amazon.com/eks/). These services simplify cluster management.
 
    - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine.
 
-## Creating a Kubernetes Manifest
+## V. Creating a Kubernetes Manifest
 
 Create a `deployment.yaml` file to describe your application's configuration. Here's a simplified example for a Node.js app:
 
@@ -148,21 +149,30 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  # The name of the Service.
   name: my-nodejs-app
+  # The namespace where the Service is created (default is often used).
   namespace: default
 spec:
+  # Selects the Pods to expose with this Service.
   selector:
     app: my-nodejs-app
+
+  # Specifies the type of Service.
   type: NodePort
+
+  # Specifies the ports to expose.
   ports:
   - name: http
+    # The target port on the Pods to forward traffic to.
     targetPort: 3000
+    # The port on the Service itself that listens for incoming traffic.
     port: 80
 ```
 
 This YAML file defines how Kubernetes should run your app.
 
-## Dockerizing Your Application
+## VI. Dockerizing Your Application
 
 Create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
 
@@ -206,7 +216,7 @@ CMD ["node", "app.js"]: Specifies the command to start your Node.js application 
 
 This `Dockerfile` packages your app into a Docker container.
 
-## Pushing Code to GitHub
+## VII. Pushing Code to GitHub
 
 Commit your code and push it to your GitHub repository using these commands:
 
@@ -220,7 +230,7 @@ Or alternatively, you can use the Source Explorer from Visual Studio Code to com
 ![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/b989c3f7-465c-4573-b414-8f912a62d2f3)
 
 
-## Setting Up GitHub Actions
+## VIII. Setting Up GitHub Actions
 
 Create a `.github/workflows` directory in your repository and add a `ci-cd.yaml` file to define your GitHub Actions workflow. Here's an example:
 
@@ -288,7 +298,7 @@ jobs:
           kubectl apply -f deployment.yaml
 ```
 
-## Configuring GitHub Secrets
+## IX. Configuring GitHub Secrets
 
 In your GitHub repository, navigate to **Settings** > **Secrets** and add the following secrets:
 
@@ -296,7 +306,7 @@ In your GitHub repository, navigate to **Settings** > **Secrets** and add the fo
 - `DOCKER_PASSWORD`: Your Docker Hub or container registry password/token.
 - `KUBE_CONFIG`: The contents of your Kubernetes config file (`~/.kube/config`).
 
-## Running Your CI/CD Pipeline
+## X. Running Your CI/CD Pipeline
 Now, whenever you push changes to your GitHub repository's `main` branch, the GitHub Actions workflow will trigger, building your Docker image and deploying it to your Kubernetes cluster.
 ![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/22681b06-0573-425e-bfdd-c526afafdf38)
 
