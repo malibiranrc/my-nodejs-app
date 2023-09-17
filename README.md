@@ -1,26 +1,21 @@
 # my-nodejs-app
 This repository will be used for teaching CI/CD via GitHub Actions deploying to Kubernetes (minikube). This project is a simple example of how to set up a Node.js app, containerize it with Docker, and deploy it to Kubernetes using GitHub Actions for CI/CD.
 
+Performing CI/CD with Kubernetes and GitHub Actions is a streamlined approach to software development that combines version control, automated testing, containerization, and orchestration. It starts with developers pushing code changes to a GitHub repository, triggering automated workflows orchestrated by GitHub Actions. These workflows build and package the application into Docker containers and deploy them to a Kubernetes cluster using defined manifests. The benefits are substantial: it ensures rapid and reliable code delivery, scalability, portability, and consistent application behavior across various environments. GitHub Actions automates the entire pipeline, while Kubernetes provides a resilient and scalable runtime environment. Together, they empower teams to accelerate development, reduce errors, and deliver high-quality software with agility and efficiency.
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/4e3e3aef-275d-4728-b2a8-fabb02cb01e6)
+
+
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-  - [Running Locally](#running-locally)
-- [Dockerization](#dockerization)
-- [Deployment to Kubernetes](#deployment-to-kubernetes)
-- [CI/CD with GitHub Actions](#cicd-with-github-actions)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [Key Terms](#key-terms)
-- [License](#license)
+- [Prerequisites](#i-prerequisites)
+- [Creating a GitHub Respository](#ii-Creating-A-GitHub-Repository)
+- [Working with GitHub in VS Code](#iii-Working-with-GitHub-in-VS-Code)
 
 # Setting Up CI/CD with GitHub Actions and Kubernetes 🚀
 
-## Prerequisites
+## I. Prerequisites
 
 Before you begin, make sure you have the following in place:
-
-//TODO - add common errors and typical scenarios to be encountered
 
 ### 1. **GitHub Account**
 
@@ -42,15 +37,14 @@ Before you begin, make sure you have the following in place:
 
    - Install `kubectl`, the Kubernetes command-line tool, using the instructions [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
-All the links in one place:
-- [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
-- [Docker](https://www.docker.com/get-started)
-- [Kubernetes Cluster](#kubernetes-cluster)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (Kubernetes command-line tool)
-- [GitHub Account](https://github.com/join)
+### 6. **Visual Studio Code**
+   *Note: VSCode is a popular code editor for various programming languages, and it will be helpful for editing and managing your project code.*
+   - Visit the [Visual Studio Code website](https://code.visualstudio.com/) and download the version compatible with your operating system.
+   - Follow the installation instructions for your operating system to install Visual Studio Code.
+Follow these steps to log in to GitHub in Visual Studio Code:
 
 
-## Step 1: Create a GitHub Repository
+## II. Creating a GitHub Repository
 
 1. Go to [GitHub](https://github.com).
 
@@ -69,15 +63,67 @@ All the links in one place:
 
 5. Click the **"Create repository"** button.
 
-## Step 2: Set Up Your Kubernetes Cluster
+## III. Working with GitHub in VS Code 
+
+*Note: Documentation taken from: https://code.visualstudio.com/docs/sourcecontrol/github*
+
+[GitHub](https://github.com) is a cloud-based service for storing and sharing source code. Using GitHub with Visual Studio Code lets you share your source code and collaborate with others right within your editor. There are many ways to interact with GitHub, for example, via their website at [https://github.com](https://github.com) or the [Git](https://git-scm.com) command-line interface (CLI), but in VS Code, the rich GitHub integration is provided by the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension.
+
+To get started with the GitHub in VS Code, you'll need to install [Git](https://git-scm.com/download), [create a GitHub account](https://docs.github.com/get-started/signing-up-for-github/signing-up-for-a-new-github-account) and install the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension. In this topic, we'll demonstrate how you can use some of your favorite parts of GitHub without leaving VS Code.
+
+If you're new to source control or want to learn more about VS Code's basic Git support, you can start with the [Source Control](/docs/sourcecontrol/overview.md) topic.
+
+### Getting started with GitHub Pull Requests and Issues
+
+Once you've installed the [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) extension, you'll need to sign in. Follow the prompts to authenticate with GitHub in the browser and return to VS Code.
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/238a0163-339a-41c2-a71b-9a5db3dbfdc6)
+
+If you are not redirected to VS Code, you can add your authorization token manually. In the browser window, you will receive your authorization token. Copy the token, and switch back to VS Code. Select **Signing in to github.com...** in the Status bar, paste the token, and hit `kbstyle(Enter)`.
+
+### Cloning a repository
+
+You can search for and clone a repository from GitHub using the **Git: Clone** command in the Command Palette (`kb(workbench.action.showCommands)`) or by using the **Clone Repository** button in the Source Control view (available when you have no folder open).
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/6daa37be-65a2-46bc-8ea7-8083d8624b90)
+
+
+From the GitHub repository dropdown you can filter and pick the repository you want to clone locally.
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/5a234537-c73c-4fe6-979a-59e7d52eae87)
+
+
+### Authenticating with an existing repository
+
+Enabling authentication through GitHub happens when you run any Git action in VS Code that requires GitHub authentication, such as pushing to a repository that you're a member of or cloning a private repository. You don't need to have any special extensions installed for authentication; it is built into VS Code so that you can efficiently manage your repository.
+
+When you do something that requires GitHub authentication, you'll see a prompt to sign in:
+
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/7ba6b7e6-4cf0-4e5e-890a-4c36687a5148)
+
+
+Follow the steps to sign into GitHub and return to VS Code. If authenticating with an existing repository doesn't work automatically, you may need to manually provide a personal access token. See [Personal Access Token authentication](https://github.com/microsoft/vscode-pull-request-github/wiki#personal-access-token-authentication) for more information.
+
+Note that there are several ways to authenticate to GitHub, including using your username and password with two-factor authentication (2FA), a personal access token, or an SSH key. See [About authentication to GitHub](https://docs.github.com/github/authenticating-to-github/about-authentication-to-github) for more information and details about each option.
+
+>**Note**: If you'd like to work on a repository without cloning the contents to your local machine, you can install the [GitHub Repositories](https://marketplace.visualstudio.com/items?itemName=github.remotehub) extension to browse and edit directly on GitHub. You can learn more below in the [GitHub Repositories extension](/docs/sourcecontrol/github.md#github-repositories-extension) section.
+    
+  Alternatively, you can view official documentation from VS Code here: 
+  https://code.visualstudio.com/docs/sourcecontrol/github
+
+
+
+## IV. Setting Up Your Kubernetes Cluster
 
    - If you're new to Kubernetes, consider using a managed service like [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) or [Amazon EKS](https://aws.amazon.com/eks/). These services simplify cluster management.
 
-   - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine.
+   - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine. We will discuss this later in the GitHub Actions step.
 
-## Step 3: Create a Kubernetes Manifest
+## V. Creating a Kubernetes Manifest
 
-Create a `deployment.yaml` file to describe your application's configuration. Here's a simplified example for a Node.js app:
+Creating a Kubernetes manifest is like giving instructions to Kubernetes on how to run your application. It ensures consistency, automates deployment, and makes it easy to manage and scale your app. Think of it as a recipe for your application in the Kubernetes environment.
+
+To create a manifest, create a `deployment.yaml` file to describe your application's configuration. You may refer to this repository to view where it's located. Here is the manifest used for this project:
 
 ```yaml
 apiVersion: apps/v1
@@ -96,38 +142,69 @@ spec:
     spec:
       containers:
       - name: my-nodejs-app
-        image: your-docker-username/my-nodejs-app:v1.0.0   # Docker image to use for the container.
+        image: rielam/mynodejsapp:latest   # Docker image to use for the container.
         ports:
-        - containerPort: 80   # Port exposed by the container (your app should listen on this port).
-        # Add more configuration options here if needed.
+        - containerPort: 3000   # Port exposed by the container (your app should listen on this port).
+        resources:
+          limits:
+            memory: 2048Mi
+            cpu: "2"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # The name of the Service.
+  name: my-nodejs-app
+  # The namespace where the Service is created (default is often used).
+  namespace: default
+spec:
+  # Selects the Pods to expose with this Service.
+  selector:
+    app: my-nodejs-app
+
+  # Specifies the type of Service.
+  type: NodePort
+
+  # Specifies the ports to expose.
+  ports:
+  - name: http
+    # The target port on the Pods to forward traffic to.
+    targetPort: 3000
+    # The port on the Service itself that listens for incoming traffic.
+    port: 80
 ```
 
-This YAML file defines how Kubernetes should run your app.
+This YAML file defines how Kubernetes should run your app. It should look something like this:
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/c85bc1a8-f6a3-470e-b298-11704a989529)
 
-## Step 4: Dockerize Your Application
 
-Create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
+## VI. Dockerizing The Application
+
+Dockerizing your app ensures it runs consistently across different environments, simplifies deployment, and makes it easy to scale and manage dependencies. It's a best practice for modern software development and CI/CD pipelines.
+
+To Dockerize your application, create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
 
 ```Dockerfile
 # Use an official Node.js runtime as a parent image
-FROM node:14
+FROM node:latest
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
 # Install application dependencies
 RUN npm install
+RUN npm install express
 
 # Copy application source code to the working directory
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 80
+# Expose the port the app runs on (your application should listen on this port)
+EXPOSE 3000
 
-# Start the application
+# Start the application when the container starts
 CMD ["node", "app.js"]
 ```
 
@@ -147,7 +224,7 @@ CMD ["node", "app.js"]: Specifies the command to start your Node.js application 
 
 This `Dockerfile` packages your app into a Docker container.
 
-## Step 5: Push Code to GitHub
+## VII. Pushing Code to GitHub
 
 Commit your code and push it to your GitHub repository using these commands:
 
@@ -157,57 +234,97 @@ git commit -m "Initial commit"
 git push origin main
 ```
 
-## Step 6: Set Up GitHub Actions
+Or alternatively, you can use the Source Explorer from Visual Studio Code to commit your code:
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/b989c3f7-465c-4573-b414-8f912a62d2f3)
 
-Create a `.github/workflows` directory in your repository and add a `ci-cd.yaml` file to define your GitHub Actions workflow. Here's an example:
+
+## VIII. Setting Up GitHub Actions
+
+Create a `.github/workflows` directory in your repository and add a `ci-cd.yaml` file to define your GitHub Actions workflow. You can refer to the code comments for explanations on what each step does. Here is an example:
 
 ```yaml
-name: CI/CD Pipeline
+# This is a basic workflow to help you get started with Actions
 
+# Name of the workflow, which will appear in the GitHub Actions UI.
+name: CI
+
+# Controls when the workflow will run.
 on:
+  # Triggers the workflow on a push event to the 'main' branch.
   push:
     branches:
       - main
 
+# Jobs define the tasks to be executed in the workflow.
 jobs:
+  # A job named 'build' that will run on an 'ubuntu-latest' runner.
   build:
     runs-on: ubuntu-latest
 
+    # Steps define the individual tasks within the job.
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      # Step to check out the source code from the repository.
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Set up Docker
-      uses: docker/setup-docker@v2
+      # Step to build and push a Docker image.
+      - name: Build and Push Docker Image
+        run: |
+          # Build a Docker image with a specific tag.
+          docker build -t rielam/mynodejsapp:latest .
 
-    - name: Build Docker image
-      run: |
-        docker build -t your-docker-username/your-app-name:your-app-tag .
-        docker push your-docker-username/your-app-name:your-app-tag
+          # Log in to Docker Hub using secrets.
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Set up kubectl
-      uses: azure/k8s-set-context@v1
-      with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          # Push the Docker image to a Docker Hub repository.
+          docker push rielam/mynodejsapp:latest
 
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f deployment.yaml
+  # A job named 'deploy' that runs after the 'build' job is completed.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    # Steps define the tasks within the 'deploy' job.
+    steps:
+      # Step to check out the source code from the repository.
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Step to start a Minikube cluster.
+      - name: Start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@latest
+
+      # Step to check the status of pods in the Kubernetes cluster.
+      - name: Try out the cluster
+        run: kubectl get pods -A
+
+      # Step to deploy the application to Minikube using a configuration file.
+      - name: Deploy to Minikube
+        run: |
+          # Apply a Kubernetes configuration file (deployment.yaml) to deploy the application.
+          kubectl apply -f deployment.yaml
 ```
 
-## Step 7: Configure GitHub Secrets
+Alternatively, you can go to the 'Actions' tab on your repository and create a simple workflow, and use that template.
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/0a9d656f-f47c-49e5-8840-8af0402ae518)
+
+
+## IX. Configuring GitHub Secrets
 
 In your GitHub repository, navigate to **Settings** > **Secrets** and add the following secrets:
 
 - `DOCKER_USERNAME`: Your Docker Hub or container registry username.
 - `DOCKER_PASSWORD`: Your Docker Hub or container registry password/token.
-- `KUBE_CONFIG`: The contents of your Kubernetes config file (`~/.kube/config`).
 
-## Step 8: Run Your CI/CD Pipeline
-
+## X. Running Your CI/CD Pipeline
 Now, whenever you push changes to your GitHub repository's `main` branch, the GitHub Actions workflow will trigger, building your Docker image and deploying it to your Kubernetes cluster.
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/22681b06-0573-425e-bfdd-c526afafdf38)
 
-Replace placeholders like `your-docker-username`, `your-app-name`, `your-app-tag`, and `your-domain.com` with your actual values.
+You can monitor your build (CI) and deployments (CD) in the 'Actions' tab of your repository at the top of the GitHub page
+![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/7a2df39a-95f2-47e9-87f3-599f6b801e47)
+
+
 
 ## Key Terms
 
