@@ -4,8 +4,8 @@ This repository will be used for teaching CI/CD via GitHub Actions deploying to 
 ## Table of Contents
 
 - [Prerequisites](#i-prerequisites)
-- [Creating a GitHub Respository](ii-Creating-A-GitHub-Repository)
-- [Working with GitHub in VS Code](iii-Working-with-GitHub-in-VS-Code)
+- [Creating a GitHub Respository](#ii-Creating-A-GitHub-Repository)
+- [Working with GitHub in VS Code](#iii-Working-with-GitHub-in-VS-Code)
 
 # Setting Up CI/CD with GitHub Actions and Kubernetes 🚀
 
