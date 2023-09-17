@@ -404,6 +404,72 @@ jobs:
 Alternatively, you can go to the 'Actions' tab on your repository and create a simple workflow, and use that template.
 ![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/0a9d656f-f47c-49e5-8840-8af0402ae518)
 
+Since we are using Minikube for this project, we used this step for deploying to Minikube instead of a cloud kubernetes provider such as AWS. 
+*Note: Documentation taken from: https://minikube.sigs.k8s.io/docs/tutorials/setup_minikube_in_github_actions/*
+
+To install and start a minikube cluster, add the following step to your [GitHub Actions workflow](https://help.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow).
+
+  ```yaml
+      steps:
+      - name: start minikube
+        id: minikube
+        uses: medyagh/setup-minikube@master
+  ```
+
+for more information see GitHub Actions marketplace [setup-minikube](https://github.com/marketplace/actions/setup-minikube).
+
+### Example: build image & deploy to minikube on each PR
+
+Requirements:
+
+- a valid Dockerfile
+- a valid `deployment.yaml` file with `imagePullPolicy: Never` see below for an example
+
+Create workflow:
+
+- copy this yaml to your workflow file for example in `.github/workflows/pr.yml`:
+
+  ```yaml
+  name: CI
+  on:
+    - pull_request
+  jobs:
+    job1:
+      runs-on: ubuntu-latest
+      name: build example and deploy to minikube
+      steps:
+      - uses: actions/checkout@v2
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
+      - name: Try the cluster !
+        run: kubectl get pods -A
+      - name: Build image
+        run: |
+          export SHELL=/bin/bash
+          eval $(minikube -p minikube docker-env)
+          docker build -f ./Dockerfile -t local/example .
+          echo -n "verifying images:"
+          docker images
+      - name: Deploy to minikube
+        run:
+          kubectl apply -f deploy-to-minikube.yaml
+      - name: Test service URLs
+        run: |
+          minikube service list
+          minikube service example --url
+          echo "------------------opening the service------------------"
+          curl $(minikube service example --url)
+  ```
+
+The above example workflow yaml, will do the following steps on each coming PR:
+
+1. Checks out the the source code
+2. Installs & starts minikube
+3. Tries out the cluster just by running `kubectl` command
+4. Build the docker image using minikube's [docker-env]({{< ref "/docs/commands/docker-env.md" >}}) feature
+5. Apply the deployment yaml file minikube
+6. Check the service been created in minikube
+
 
 ## IX. Configuring GitHub Secrets
 
