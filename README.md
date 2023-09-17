@@ -57,7 +57,9 @@ All the links in one place:
 2. Log in to your GitHub account.
 
 3. Click the **"+"** icon in the top right corner and select **"New Repository"**.
-![NEW REPOSITORY](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/cd264f52-d645-488a-b049-9eb99e0dabb9)
+
+    ![NEW REPOSITORY](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/cd264f52-d645-488a-b049-9eb99e0dabb9)
+
 4. Fill out the repository details:
    - Repository name.
    - Description (optional).
@@ -71,7 +73,7 @@ All the links in one place:
 
    - If you're new to Kubernetes, consider using a managed service like [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine) or [Amazon EKS](https://aws.amazon.com/eks/). These services simplify cluster management.
 
-   - For local development and experimentation, you can use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine.
+   - For local development this project, we are going to use [Minikube](https://minikube.sigs.k8s.io/docs/start/) to set up a single-node Kubernetes cluster on your machine.
 
 ## Step 3: Create a Kubernetes Manifest
 
