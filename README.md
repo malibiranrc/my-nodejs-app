@@ -335,7 +335,15 @@ Your project should look something like this:
 
 ![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/ec554ca1-9fe6-4862-b425-8f309a96bd37)
 
-## VIII. Setting Up GitHub Actions
+
+## XIII. Configuring GitHub Secrets
+
+In your GitHub repository, navigate to **Settings** > **Secrets** and add the following secrets:
+
+- `DOCKER_USERNAME`: Your Docker Hub or container registry username.
+- `DOCKER_PASSWORD`: Your Docker Hub or container registry password/token.
+
+## IX. Setting Up GitHub Actions
 
 Create a `.github/workflows` directory in your repository and add a `ci-cd.yaml` file to define your GitHub Actions workflow. You can refer to the code comments for explanations on what each step does. Here is an example:
 
@@ -472,13 +480,6 @@ The above example workflow yaml, will do the following steps on each coming PR:
 5. Apply the deployment yaml file minikube
 6. Check the service been created in minikube
 
-
-## IX. Configuring GitHub Secrets
-
-In your GitHub repository, navigate to **Settings** > **Secrets** and add the following secrets:
-
-- `DOCKER_USERNAME`: Your Docker Hub or container registry username.
-- `DOCKER_PASSWORD`: Your Docker Hub or container registry password/token.
 
 ## X. Running Your CI/CD Pipeline
 Now, whenever you push changes to your GitHub repository's `main` branch, the GitHub Actions workflow will trigger, building your Docker image and deploying it to your Kubernetes cluster.
