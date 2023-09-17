@@ -187,6 +187,27 @@ It should look something like this:
 
 ![image](https://github.com/malibiranrc/my-nodejs-app/assets/77093390/efc49d9e-fcc0-4d08-b30b-c8df1c0cbb9e)
 
+### Creating a package.json file
+Create a package.json file: If you don't already have a package.json file for your Node.js application, you should create one. This file lists your project's dependencies and other important information.
+
+```json
+{
+    "name": "docker_web_app",
+    "version": "1.0.0",
+    "description": "Node.js on Docker",
+    "author": "Riel Malibiran <ra.malibiran@gmail.com>",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.16.1"
+    }
+  }
+```
+
+Creating a `package.json` file is essential for managing your Node.js application's dependencies and is typically used in the Docker image build process. Make sure to include all your project's dependencies in this file.
+
 To Dockerize your application, create a `Dockerfile` in your project directory. Here is an example for a Node.js app:
 
 ```Dockerfile
@@ -229,26 +250,7 @@ CMD ["node", "app.js"]: Specifies the command to start your Node.js application 
 
 This `Dockerfile` packages your app into a Docker container.
 
-### Creating a package.json file
-Create a package.json file: If you don't already have a package.json file for your Node.js application, you should create one. This file lists your project's dependencies and other important information.
 
-```json
-{
-    "name": "docker_web_app",
-    "version": "1.0.0",
-    "description": "Node.js on Docker",
-    "author": "Riel Malibiran <ra.malibiran@gmail.com>",
-    "main": "server.js",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "dependencies": {
-      "express": "^4.16.1"
-    }
-  }
-```
-
-Creating a `package.json` file is essential for managing your Node.js application's dependencies and is typically used in the Docker image build process. Make sure to include all your project's dependencies in this file.
 
 ## V. Setting Up Your Kubernetes Cluster
 
